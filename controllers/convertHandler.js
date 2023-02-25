@@ -51,22 +51,24 @@ class ConvertHandler {
   };
 
   getUnit = function (input) {
-    let result;
+    let result = "invalid unit";
     let regEx = /[a-z]+/i;
     let arr = input.match(regEx);
-    let initUnit = arr[0].toLowerCase();
-    switch (initUnit) {
-      case "kg":
-      case "lbs":
-      case "km":
-      case "mi":
-      case "l":
-      case "gal":
-        result = initUnit;
-        break;
-      default:
-        //throw new Error("invalid unit");
-        result = "invalid unit";
+    if(Array.isArray(arr)){
+      let initUnit = arr[0].toLowerCase();
+      switch (initUnit) {
+        case "kg":
+        case "lbs":
+        case "km":
+        case "mi":
+        case "l":
+        case "gal":
+          result = initUnit;
+          break;
+        default:
+          //throw new Error("invalid unit");
+          result = "invalid unit";
+      }
     }
     return result;
   };
