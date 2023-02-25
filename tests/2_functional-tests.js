@@ -6,7 +6,7 @@ const server = require("../server");
 chai.use(chaiHttp);
 
 suite("Functional Tests", function () {
-  test("Convert a valid input such as 10L:GET request to /api/convert", () => {
+  test("Convert a valid input such as 10L:GET request to /api/convert", (done) => {
     chai
       .request(server)
       .get("/api/convert?input=10L")
@@ -20,9 +20,10 @@ suite("Functional Tests", function () {
         assert.propertyVal(obj,"returnNum",value);
         assert.propertyVal(obj,"string",`10 liters converts to ${value} gallons`);
       });
+      done();
   });
 
-  test("Convert an invalid input such as 32g: GET request to /api/convert", () => {
+  test("Convert an invalid input such as 32g: GET request to /api/convert", (done) => {
     chai
       .request(server)
       .get("/api/convert?input=32g")
@@ -30,9 +31,10 @@ suite("Functional Tests", function () {
         assert.equal(200, res.status, "server is working!");
         assert.equal(res.text, "invalid unit");
       });
+      done();
   });
 
-  test("Convert an invalid number such as 3/7.2/4kg: GET request to /api/convert", () => {
+  test("Convert an invalid number such as 3/7.2/4kg: GET request to /api/convert", (done) => {
     chai
       .request(server)
       .get("/api/convert?input=3/7.2/4kgL")
@@ -40,9 +42,10 @@ suite("Functional Tests", function () {
         assert.equal(200, res.status, "server is working!");
         assert.equal(res.text, "invalid number and unit");
       });
+      done();
   });
 
-  test("Convert with no number such as kg: GET request to /api/convert", () => {
+  test("Convert with no number such as kg: GET request to /api/convert", (done) => {
     chai
       .request(server)
       .get("/api/convert?input=kg")
@@ -60,6 +63,7 @@ suite("Functional Tests", function () {
           `1 kilograms converts to ${value} pounds`
         );
       });
+      done();
   });
 
   test("invalid number AND unit get request to /api/convert", (done) => {
