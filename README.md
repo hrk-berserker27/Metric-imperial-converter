@@ -1,3 +1,15 @@
 # Metric-Imperial Converter
 
-This is the boilerplate for the Metric-Imperial Converter project. Instructions for building your project can be found at https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/metric-imperial-converter
+## About
+- This project was build for the freeCodeCamp Quality Assurance Certification.
+- It is a fullstack application which converts imperial units such as gallons, pounds and miles into liters, kilograms and kilometers, respectively and vice-versa.
+
+## Tech stack
+- NodeJS version 18.4.2
+- HTML5
+- CSS3
+- Backend framework: ExpressJS
+- Test framework: Mochai
+
+## Author
+- Hritick Bhushan
